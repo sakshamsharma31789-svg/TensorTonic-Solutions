@@ -8,7 +8,6 @@ def cross_entropy_loss(y_true, y_pred):
     y_pred = np.asarray(y_pred)
     N = len(y_true)
     correct_class_probs = y_pred[np.arange(N),y_true]
-    # Write code here
     loss = -np.mean(np.log(correct_class_probs))
     return loss
     pass
