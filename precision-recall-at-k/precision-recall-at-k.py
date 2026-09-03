@@ -1,12 +1,11 @@
-def precision_recall_at_k(recommended, relevant, k):
+def precision_recall_at_k(recommended: list, relevant: list, k: int) -> list[float]:
     """
-    Compute precision@k and recall@k for a recommendation list.
+    Returns [precision, recall] as a list of two floats.
     """
-    top_k = recommended[:k]
-    top_k_set = set(top_k)
-    relevant_set = set(relevant)
-    hits = len(top_k_set & relevant_set)
-    precision = hits/k
-    recall = hits / len(relevant) if len(relevant)>0 else  0.0
-    return [float(precision),float(recall)]
-   
+    top_k = set(recommended[:k])
+    relevent_set = set(relevant)
+    numerator = len(top_k.intersection(relevent_set))
+    precision = numerator/k
+    recall = numerator/len(relevant)
+    return [precision,recall]
+    pass
